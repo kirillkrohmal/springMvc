@@ -16,9 +16,9 @@ public class UserController {
     UserServiceImpl userService;
 
     @GetMapping(value = "/list")
-    public String findAll(Model model) {
+    public String findAll() {
         userService.findAll();
-        return "/users";
+        return "/form";
     }
 
     @PostMapping(value = "/new")
