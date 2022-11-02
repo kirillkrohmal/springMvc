@@ -3,12 +3,14 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
 <head>
     <meta charset="UTF-8">
     <title>Create cars</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" th:href="@{'/css/main.css'}"/>
     <link layout:fragment="pageStyleLink"/>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
     <style layout:fragment="pageStyle"></style>
 
 </head>
@@ -23,8 +25,7 @@
                 <th>Name of user</th>
                 <th>Email</th>
                 <th>Address</th>
-                <th>Edit user</th>
-                <th>Delete user</th>
+                <th>Actions</th>
             </tr>
             </thead>
             <tbody>
@@ -34,6 +35,9 @@
                     <td th:text="${user.name}"></td>
                     <td th:text="${user.email}"></td>
                     <td th:text="${user.address}"></td>
+
+                    <td th:a href="@Url.Action("add.html")" class="btn btn-success"> <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Edit/Add</a></td>
+                    <td th:a href="@Url.Action("Index")" class="btn btn-success"> <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Delete</a></td>
                 </tr>
             </th:block>
             </tbody>

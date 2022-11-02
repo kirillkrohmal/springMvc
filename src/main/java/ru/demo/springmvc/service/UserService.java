@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface UserService<T> {
 
-    List<T> findAll();
+    List<User> findAll();
 
     void save(User user);
 

@@ -7,13 +7,13 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.demo.springmvc.model.User;
-import ru.demo.springmvc.service.UserServiceImpl;
+import ru.demo.springmvc.service.UserService;
 
 @Controller
 public class UserController {
 
     @Autowired
-    UserServiceImpl userService;
+    UserService userService;
 
     @GetMapping(value = "/list")
     public String findAll() {
