@@ -20,7 +20,7 @@ import java.util.Properties;
 @Configuration
 @EnableTransactionManagement
 @PropertySource(value = "classpath:db.properties")
-@ComponentScan(value  ="ru")
+@ComponentScan(value  ="ru.demo.springmvcpack")
 public class HibernateConfig {
     @Autowired
     private Environment environment;

@@ -36,14 +36,14 @@
                     <td th:text="${user.email}"></td>
                     <td th:text="${user.address}"></td>
 
-                    <td th:a href="@Url.Action("add.html")" class="btn btn-success"> <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Edit</a></td>
-                    <td th:a href="@Url.Action("Index")" class="btn btn-success"> <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Delete</a></td>
+                    <td><form th:action="@{/list/{id}/edit(id=${user.getId()})}" class="btn btn-success"> <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Edit</a> </form></td>
+                    <td><form th:method="DELETE" th:action="@{/list/{id}(id=${user.getId()})}" class="btn btn-success"> <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Delete</a></form></td>
                 </tr>
             </th:block>
 
-            <a href="@Url.Action("Index")" class="btn btn-success"> <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Add</a>
-
             </tbody>
+            <button type="button" form th:method="POST" th:action="@{/new}" th:object="${newUsers}" class="btn btn-success" > <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Add</a></form></button>
+
         </table>
 
     </div>
