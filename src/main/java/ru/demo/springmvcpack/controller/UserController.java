@@ -34,18 +34,17 @@ public class UserController {
         return "/form";
     }
 
-    @PutMapping(value = "{id}/edit")
+    @PutMapping(value = "list/{id}/edit")
     public String update(@ModelAttribute User user, Model model) {
 
         userService.update(user);
         return "/form";
     }
 
-    @DeleteMapping(value = "/delete")
-    public String delete(int id, Model model) {
+    @DeleteMapping(value = "list/{id}")
+    public String delete(@PathVariable("id") int id, Model model) {
 
         User user = userService.delete(id);
-
 
         if(null == user) {
             throw new NullPointerException();

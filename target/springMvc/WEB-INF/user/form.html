@@ -36,10 +36,13 @@
                     <td th:text="${user.email}"></td>
                     <td th:text="${user.address}"></td>
 
-                    <td th:a href="@Url.Action("add.html")" class="btn btn-success"> <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Edit/Add</a></td>
+                    <td th:a href="@Url.Action("add.html")" class="btn btn-success"> <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Edit</a></td>
                     <td th:a href="@Url.Action("Index")" class="btn btn-success"> <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Delete</a></td>
                 </tr>
             </th:block>
+
+            <a href="@Url.Action("Index")" class="btn btn-success"> <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Add</a>
+
             </tbody>
         </table>
 
