@@ -13,7 +13,7 @@ import ru.demo.springmvcpack.service.UserService;
 public class UserController {
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @GetMapping(value = "/list")
     public String findAll() {

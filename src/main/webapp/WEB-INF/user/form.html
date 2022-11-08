@@ -6,7 +6,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Create cars</title>
+    <title>Create users</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" th:href="@{'/css/main.css'}"/>
     <link layout:fragment="pageStyleLink"/>
@@ -21,7 +21,6 @@
         <table class="table">
             <thead class="thead-light">
             <tr>
-                <th>ID</th>
                 <th>Name of user</th>
                 <th>Email</th>
                 <th>Address</th>
@@ -31,7 +30,6 @@
             <tbody>
             <th:block th:each="user : ${newUsers}" th:remove="tag">
                 <tr>
-                    <td th:text="${user.id}"></td>
                     <td th:text="${user.name}"></td>
                     <td th:text="${user.email}"></td>
                     <td th:text="${user.address}"></td>
@@ -42,7 +40,7 @@
             </th:block>
 
             </tbody>
-            <button type="button" form th:method="POST" th:action="@{/new}" th:object="${newUsers}" class="btn btn-success" > <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Add</a></form></button>
+            <button type="button" form th:method="POST" th:action="@{/new}" th:object="${user}" class="btn btn-success" > <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Add</a></form></button>
 
         </table>
 
