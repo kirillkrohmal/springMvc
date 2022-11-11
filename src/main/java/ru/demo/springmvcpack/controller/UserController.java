@@ -40,7 +40,7 @@ public class UserController {
     }
 
 
-    @GetMapping(value = "/edit")
+    @GetMapping(value = "/{id}/edit")
     public String edit(@RequestParam(value = "id") int id, Model model) {
         model.addAttribute("person", userService.read(id));
 
@@ -48,13 +48,13 @@ public class UserController {
     }
 
 
-    @PutMapping(value = "/edit/{id}")
+    @PatchMapping(value = "/{id}")
     public String update(@ModelAttribute User user, Model model) {
         userService.update(user);
         return "redirect:/list";
     }
 
-    @DeleteMapping(value = "list/{id}")
+    @DeleteMapping(value = "/{id}")
     public String delete(@PathVariable("id") int id) {
         userService.delete(id);
 
