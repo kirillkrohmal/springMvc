@@ -21,7 +21,7 @@ public class UserController {
         return "/form";
     }
 
-    @PostMapping(value = "/new")
+    @GetMapping(value = "/new")
     public String addUserForm(@ModelAttribute("user") User user, BindingResult bindingResult,
                               Model model) {
 
@@ -29,29 +29,35 @@ public class UserController {
             model.addAttribute("user",userService.findAll());
         }
 
+        return "/form";
+    }
+
+    @PostMapping
+    public String create(@ModelAttribute("user")User user) {
         userService.save(user);
-
-        return "/form";
-    }
-
-    @PutMapping(value = "list/{id}/edit")
-    public String update(@ModelAttribute User user, Model model) {
-
-        userService.update(user);
-        return "/form";
-    }
-
-    @DeleteMapping(value = "list/{id}")
-    public String delete(@PathVariable("id") int id, Model model) {
-
-        User user = userService.delete(id);
-
-        if(null == user) {
-            throw new NullPointerException();
-        }
-        model.addAttribute(userService.delete(id));
 
         return "redirect:/list";
     }
 
+
+    @GetMapping(value = "/edit")
+    public String edit(@RequestParam(value = "id") int id, Model model) {
+        model.addAttribute("person", userService.read(id));
+
+        return "/edit";
+    }
+
+
+    @PutMapping(value = "/edit/{id}")
+    public String update(@ModelAttribute User user, Model model) {
+        userService.update(user);
+        return "redirect:/list";
+    }
+
+    @DeleteMapping(value = "list/{id}")
+    public String delete(@PathVariable("id") int id) {
+        userService.delete(id);
+
+        return "redirect:/list";
+    }
 }

@@ -4,8 +4,8 @@ import ru.demo.springmvcpack.model.User;
 
 import java.util.List;
 
-public interface UserDao<T> {
-    List<T> findAll();
+public interface UserDao {
+    List<User> findAll();
 
     void save(User user);
 

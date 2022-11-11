@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class UserServiceImpl<T> implements UserService{
+public class UserServiceImpl implements UserService{
 
     @Autowired
     private UserDao userDao;
@@ -20,6 +20,7 @@ public class UserServiceImpl<T> implements UserService{
     public List findAll() {
         return userDao.findAll();
     }
+
 
     @Override
     public void save(User user) {
@@ -38,6 +39,6 @@ public class UserServiceImpl<T> implements UserService{
 
     @Override
     public User read(int id) {
-        return null;
+        return userDao.read(id);
     }
 }

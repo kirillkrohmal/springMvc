@@ -4,7 +4,7 @@ import ru.demo.springmvcpack.model.User;
 
 import java.util.List;
 
-public interface UserService<T> {
+public interface UserService {
 
     List<User> findAll();
 

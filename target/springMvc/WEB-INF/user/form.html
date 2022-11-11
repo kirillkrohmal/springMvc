@@ -34,13 +34,13 @@
                     <td th:text="${user.email}"></td>
                     <td th:text="${user.address}"></td>
 
-                    <td><form th:action="@{/user/{id}/edit(id=${user.getId()})}" class="btn btn-success"> <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Edit</a> </form></td>
+                    <td><a href = "/user/edit" form th:action="@{/user/{id}/edit(id=${user.getId()})}" class="btn btn-success"> <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Edit</a> </hrefform></td>
                     <td><form th:method="DELETE" th:action="@{/user/{id}(id=${user.getId()})}" class="btn btn-success"> <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Delete</a></form></td>
                 </tr>
             </th:block>
 
             </tbody>
-            <button type="button" form th:method="POST" th:action="@{/new}" th:object="${user}" class="btn btn-success" > <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Add</a></form></button>
+            <button type="button" form th:method="POST" th:action="@{/new}"  th:object="${user}" class="btn btn-success" > <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Add</a></form></button>
 
         </table>
 
