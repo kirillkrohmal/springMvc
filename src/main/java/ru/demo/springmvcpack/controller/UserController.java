@@ -40,7 +40,7 @@ public class UserController {
     }
 
 
-    @GetMapping(value = "/{id}/edit")
+    @GetMapping(value = "/edit")
     public String edit(@RequestParam(value = "id") int id, Model model) {
         model.addAttribute("person", userService.read(id));
 
