@@ -29,7 +29,7 @@ public class UserController {
             model.addAttribute("user",userService.findAll());
         }
 
-        return "/form";
+        return "/add";
     }
 
     @PostMapping
