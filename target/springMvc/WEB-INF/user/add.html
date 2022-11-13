@@ -12,29 +12,33 @@
     <style layout:fragment="pageStyle"></style>
 </head>
 <body>
-<div align="center">
-    <h2>Create users</h2>
-    <form:form action="save" method="post">
-        <table border="0" cellpadding="5">
+<form th:method="POST" th:action="@{/user}" th:object="${user}">
+    <input type="hidden" th:field="*{id}" th:value="*{getId()}">
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
+            <div class="col-md-6 mb-3">
                 <label th:for="name">Name of user:
-                    <input th:field="*{name}" type="text"  id="name"/>
+                    <input th:field="*{name}" type="text" id="name"/>
                 </label>
-
+            </div>
+            <div class="col-md-6 mb-3">
                 <label th:for="email">Email:
-                    <input th:field="*{email}" type="text"  id="email"/>
+                    <input th:field="*{email}" type="text" id="email"/>
                 </label>
-
+            </div>
+            <div class="col-md-6 mb-3">
                 <label th:for="address">Address:
-                    <input th:field="*{address}" type="text"  id="address"/>
+                    <input th:field="*{address}" type="text" id="address"/>
                 </label>
+            </div>
             <tr>
-                <td> <button type="button" class="btn btn-secondary bg-secondary text-white">Success</button></td>
+                <td>
+                    <button type="button" class="btn btn-secondary bg-secondary text-white">Success</button>
+                </td>
             </tr>
-        </table>
-    </form:form>
-</div>
-
-
+        </div>
+        </form:form>
+    </div>
 
 
 </body>
