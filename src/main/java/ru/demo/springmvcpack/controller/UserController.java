@@ -15,7 +15,8 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping(value = "/list")
+
+    @GetMapping("/list")
     public String findAll() {
         userService.findAll();
         return "/form";
