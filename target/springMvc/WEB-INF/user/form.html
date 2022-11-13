@@ -28,14 +28,16 @@
             </tr>
             </thead>
             <tbody>
-            <th:block th:each="user : ${newUsers}" th:remove="tag">
+            <th:block th:each="users : ${user}" th:remove="tag">
                 <tr>
-                    <td th:text="${user.name}"></td>
-                    <td th:text="${user.email}"></td>
-                    <td th:text="${user.address}"></td>
+                    <td th:text="${users.name}"></td>
+                    <td th:text="${users.email}"></td>
+                    <td th:text="${users.address}"></td>
 
-                    <td><a type="button" th:href="@{/edit}" class="btn btn-secondary bg-secondary text-white">Update</a></td>
-                    <td><form th:action="@{/user/{id}(id=${user.getId()})}" th:method="DELETE" class="btn btn-secondary bg-secondary text-white">Delete</form></td>
+                    <td>
+                        <a type="button" th:href="@{/edit}" class="btn btn-secondary bg-secondary text-white">Update</a>
+                        <form th:action="@{/user/{id}(id=${user.getId()})}" th:method="DELETE" class="btn btn-secondary bg-secondary text-white">Delete</form>
+                    </td>
                 </tr>
             </th:block>
 

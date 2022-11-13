@@ -17,8 +17,8 @@ public class UserController {
 
 
     @GetMapping("/list")
-    public String findAll() {
-        userService.findAll();
+    public String findAll(Model model) {
+        model.addAttribute("user", userService.findAll());
         return "/form";
     }
 
