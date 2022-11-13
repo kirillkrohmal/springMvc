@@ -16,14 +16,17 @@
     <h2>Create users</h2>
     <form:form action="save" method="post">
         <table border="0" cellpadding="5">
-                <label th:for="name">Name of user: </label>
-                <input th:name="name" type="text" id="name"/>
+                <label th:for="name">Name of user:
+                    <input th:field="*{name}" type="text"  id="name"/>
+                </label>
 
-                <label th:for="email">Email: </label>
-                <input th:name="email" type="text" id="email"/>
+                <label th:for="email">Email:
+                    <input th:field="*{email}" type="text"  id="email"/>
+                </label>
 
-                <label th:for="address">Address: </label>
-                <input th:name="address" type="text" id="address"/>
+                <label th:for="address">Address:
+                    <input th:field="*{address}" type="text"  id="address"/>
+                </label>
             <tr>
                 <td> <button type="button" class="btn btn-secondary bg-secondary text-white">Success</button></td>
             </tr>

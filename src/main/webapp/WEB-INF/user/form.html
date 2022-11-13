@@ -36,7 +36,7 @@
 
                     <td>
                         <a type="button" th:href="@{/edit}" class="btn btn-secondary bg-secondary text-white">Update</a>
-                        <form th:action="@{/user/{id}(id=${user.getId()})}" th:method="DELETE" class="btn btn-secondary bg-secondary text-white">Delete</form>
+                        <a type="button" class="btn btn-secondary bg-secondary text-white" form th:action="@{/user/{id}(id=${user.getId()})}" th:method="DELETE" >Delete</a>
                     </td>
                 </tr>
             </th:block>
