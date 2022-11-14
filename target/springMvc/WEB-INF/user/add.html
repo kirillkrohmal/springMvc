@@ -12,7 +12,9 @@
     <style layout:fragment="pageStyle"></style>
 </head>
 <body>
+<div align="center">
 <form th:method="POST" th:action="@{/user}" th:object="${user}">
+    <h2>Create users</h2>
     <input type="hidden" th:field="*{id}" th:value="*{getId()}">
     <div class="form-row">
         <div class="col-md-6 mb-3">
@@ -37,9 +39,9 @@
                 </td>
             </tr>
         </div>
-        </form:form>
+
     </div>
-
-
+</form>
+</div>
 </body>
 </html>
