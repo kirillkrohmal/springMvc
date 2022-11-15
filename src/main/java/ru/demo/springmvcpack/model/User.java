@@ -4,7 +4,7 @@ package ru.demo.springmvcpack.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "newUsers")
+@Table(name = "newusers")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

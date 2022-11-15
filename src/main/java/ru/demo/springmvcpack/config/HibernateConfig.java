@@ -14,6 +14,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Properties;
 
@@ -44,7 +45,7 @@ public class HibernateConfig {
         return dataSource;
     }
 
-    @Bean()
+    @Bean
     public LocalContainerEntityManagerFactoryBean getEntityManagerFactory() {
         Properties props = new Properties();
         props.put("hibernate.show_sql", environment.getProperty("hibernate.show_sql"));
@@ -61,9 +62,9 @@ public class HibernateConfig {
     }
 
     @Bean
-    public JpaTransactionManager transactionManager() {
+    public JpaTransactionManager transactionManager(EntityManagerFactory emf) {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
-        transactionManager.setEntityManagerFactory(getEntityManagerFactory().getObject());
+        transactionManager.setEntityManagerFactory(emf);
         return transactionManager;
     }
 }

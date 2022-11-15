@@ -27,14 +27,14 @@ public class UserController {
                               Model model) {
 
         if (bindingResult.hasErrors()) {
-            model.addAttribute("user",userService.findAll());
+            model.addAttribute("user", userService.findAll());
         }
 
         return "/add";
     }
 
     @PostMapping
-    public String create(@ModelAttribute("user")User user) {
+    public String create(@ModelAttribute("user") User user) {
         userService.save(user);
 
         return "redirect:/list";

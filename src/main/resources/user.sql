@@ -1,4 +1,4 @@
-CREATE TABLE "newUsers"
+CREATE TABLE newusers
 (
   id integer,
   name character varying,

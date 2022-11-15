@@ -6,9 +6,11 @@ import ru.demo.springmvcpack.model.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
+
 public class UserDaoImpl implements UserDao {
 
     @PersistenceContext
@@ -20,8 +22,11 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+    @Transactional
     public void save(User user) {
+        entityManager.getTransaction().begin();
         entityManager.persist(user);
+        entityManager.getTransaction().commit();
         entityManager.flush();
     }
 
