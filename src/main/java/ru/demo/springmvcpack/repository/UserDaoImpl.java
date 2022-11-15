@@ -1,57 +1,71 @@
 package ru.demo.springmvcpack.repository;
 
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import ru.demo.springmvcpack.model.User;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
-
 public class UserDaoImpl implements UserDao {
+    private final SessionFactory sessionFactory;
 
-    @PersistenceContext
-    EntityManager entityManager;
-
-    @Override
-    public List findAll() {
-        return entityManager.createQuery("from User").getResultList();
+    @Autowired
+    public UserDaoImpl(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
     }
 
     @Override
     @Transactional
-    public void save(User user) {
-        entityManager.getTransaction().begin();
-        entityManager.persist(user);
-        entityManager.getTransaction().commit();
-        entityManager.flush();
+    public List findAll() {
+        Session session = sessionFactory.getCurrentSession();
+        return session.createQuery("from User").getResultList();
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public void save(User user) {
+        Session session = sessionFactory.getCurrentSession();
+        session.save(user);
+        session.flush();
+    }
+
+    @Override
+    @Transactional
     public User delete(int id) {
         User user = read(id);
+        Session session = sessionFactory.getCurrentSession();
 
         if (null == user) {
             System.out.println("You could paste user id");
         }
-        entityManager.remove(id);
-        entityManager.flush();
+        session.remove(session.get(User.class, id));
 
         return user;
     }
 
 
     @Override
-    public void update(User user) {
-        entityManager.merge(user);
-        entityManager.flush();
+    @Transactional
+    public void update(User user, int id) {
+        Session session = sessionFactory.getCurrentSession();
+
+        User userToBeUpdate = session.get(User.class, id);
+
+        userToBeUpdate.setName(user.getName());
+        userToBeUpdate.setAddress(user.getAddress());
+        userToBeUpdate.setEmail(user.getEmail());
+
     }
 
     @Override
+    @Transactional(readOnly = true)
     public User read(int id) {
-        return entityManager.find(User.class, id);
+        Session session = sessionFactory.getCurrentSession();
+
+        return session.get(User.class, id);
     }
 }
