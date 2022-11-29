@@ -30,7 +30,6 @@ public class UserDaoImpl implements UserDao {
     public void save(User user) {
         Session session = sessionFactory.getCurrentSession();
         session.save(user);
-        session.flush();
     }
 
     @Override
